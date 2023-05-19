@@ -101,6 +101,25 @@ async function run() {
         })
 
 
+        // app.get('/data', async (req, res) => {
+        //     console.log(req.query.sub_category);
+        //     let query = {};
+        //     if (req.query?.sub_category) {
+        //         query = { sub_category: req.query.sub_category }
+        //     }
+        //     const result = await addAToyCollection.find(query).toArray();
+        //     res.send(result);
+        // })
+
+
+
+
+        app.get('/data/:sub_category', async (req, res) => {
+
+            const result = await addAToyCollection.find({ sub_category: req.params.sub_category, }).toArray();
+            res.send(result);
+
+        })
 
 
 
