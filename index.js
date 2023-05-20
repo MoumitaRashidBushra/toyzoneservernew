@@ -125,18 +125,7 @@ async function run() {
         })
 
 
-        // app.get("/toySearch/:text", async (req, res) => {
-        //     const text = req.params.text;
-        //     const result = await jobsCollection
-        //         .find({
-        //             $or: [
-        //                 { title: { $regex: text, $options: "i" } },
-        //                 { category: { $regex: text, $options: "i" } },
-        //             ],
-        //         })
-        //         .toArray();
-        //     res.send(result);
-        // });
+
 
 
 
