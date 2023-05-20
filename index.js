@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 
-console.log(process.env.DB_PASS)
+//console.log(process.env.DB_PASS)
 
 
 
@@ -34,12 +34,18 @@ async function run() {
         const addAToyCollection = client.db('toyZone').collection('addAToy');
 
         app.get('/addAToys', async (req, res) => {
+            const sort = req.query?.sort;
+
             console.log(req.query.email);
+
             let query = {};
             if (req.query?.email) {
                 query = { email: req.query.email }
             }
-            const result = await addAToyCollection.find(query).toArray();
+
+            const value = sort === 'dese' ? -1 : 1;
+
+            const result = await addAToyCollection.find(query).sort({ price: value }).toArray();
             res.send(result);
         })
 
